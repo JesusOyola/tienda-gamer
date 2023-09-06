@@ -1,0 +1,54 @@
+.card-container {
+  padding: 1rem 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.product-image {
+  object-fit: contain;
+  margin-top: 1rem;
+  max-width: 100%;
+  max-height: 80%;
+  margin-left: 2rem;
+}
+
+.agregar-carrito-btn {
+  background-color: rgb(215, 13, 222);
+  max-width: 180px;
+}
+
+h1 {
+  color: #4675b9;
+}
+
+mat-card {
+  display: flex;
+  flex-direction: row;
+  margin-top: 2rem;
+  height: 10rem;
+  width: 70%;
+}
+
+mat-card-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 16px 16px 16px;
+}
+
+mat-card-title {
+  font: 200 18px/20px Montserrat, sans-serif;
+}
+
+
+.expansion-panel{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.mat-card{
+    display: flex;
+    flex-direction: column;
+    
+}

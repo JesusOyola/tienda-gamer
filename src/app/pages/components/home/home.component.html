@@ -1,1 +1,35 @@
-<p>home works!</p>
+<section class="card-container">
+  <!-- Mat expansion panel -->
+
+  <article class="expansion-panel">
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Self aware panel </mat-panel-title>
+        <mat-panel-description>
+          <!-- Currently I am {{ panelOpenState ? "open" : "closed" }} -->
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>I'm visible because I am open</p>
+    </mat-expansion-panel>
+  </mat-accordion>
+</article>
+
+  <!-- Mat card -->
+  <article class="mat-card">
+  <mat-card *ngFor="let product of listProducts">
+    <img
+      class="product-image"
+      mat-card-image
+      src="{{ urlImage }}{{ product.imagenes[0].nombre }}-med.jpg"
+      alt="Photo of a Shiba Inu"
+    />
+    <mat-card-header>
+      <mat-card-title>{{ product.nombre }}</mat-card-title>
+      <h1>{{ product.precio | currency : "$ " : "symbol" : "1.0-0" }}</h1>
+
+      <button mat-button class="agregar-carrito-btn">SUMAR AL CARRITO</button>
+    </mat-card-header>
+  </mat-card>
+</article>
+</section>
