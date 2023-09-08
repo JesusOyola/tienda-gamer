@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Categorias, Products } from 'src/app/interface/product.interface';
+import { CartService } from 'src/app/services/cart.service';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -7,14 +9,18 @@ import { ProductsService } from 'src/app/services/products.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   listProducts: Products[] = [];
   listCategories: Categorias[] = [];
+  private subcription$!: Subscription;
 
   urlImage: string =
     'https://compragamer.net/pga/imagenes_publicadas/compragamer_Imganen_general_';
 
-  constructor(private productsService: ProductsService) {}
+  constructor(
+    private productsService: ProductsService,
+    private cartService: CartService
+  ) {}
 
   ngOnInit(): void {
     this.obtenerProductos();
@@ -22,20 +28,26 @@ export class HomeComponent implements OnInit {
   }
 
   obtenerProductos() {
-    this.productsService.getProducts().subscribe({
+    this.subcription$ = this.productsService.getProducts().subscribe({
       next: (data) => {
-        console.log("productos",data);
         this.listProducts = data;
       },
     });
   }
 
   obtenerCategorias() {
-    this.productsService.getCategorias().subscribe({
+    this.subcription$ = this.productsService.getCategorias().subscribe({
       next: (data) => {
-        console.log('categorias', data);
-        this.listCategories = data
+        this.listCategories = data;
       },
     });
+  }
+
+  agregarAlCarrito(product: Products) {
+    this.cartService.addNewProduct(product);
+  }
+
+  ngOnDestroy(): void {
+    this.subcription$.unsubscribe();
   }
 }

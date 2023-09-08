@@ -30,7 +30,7 @@
       <mat-card-title>{{ product.nombre }}</mat-card-title>
       <h1>{{ product.precio | currency : "$ " : "symbol" : "1.0-0" }}</h1>
 
-      <button mat-button class="agregar-carrito-btn">SUMAR AL CARRITO</button>
+      <button mat-button class="agregar-carrito-btn" (click)="agregarAlCarrito(product)">SUMAR AL CARRITO</button>
     </mat-card-header>
   </mat-card>
 </article>

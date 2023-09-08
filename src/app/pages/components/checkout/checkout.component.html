@@ -1,1 +1,21 @@
-<p>checkout works!</p>
+<section class="card-container">
+   
+    <!-- Mat card -->
+    <article class="mat-card">
+    <mat-card *ngFor="let product of cartProductsList; let i = index">
+      <img
+        class="product-image"
+        mat-card-image
+        src="{{ urlImage }}{{ product.imagenes[0].nombre }}-med.jpg"
+        alt="Photo of a Shiba Inu"
+      />
+      <mat-card-header>
+        <mat-card-title>{{ product.nombre }}</mat-card-title>
+        <h1>{{ product.precio | currency : "$ " : "symbol" : "1.0-0" }}</h1>
+  
+        <button mat-button class="eliminar-producto" (click)="eliminarProductoDelCarrito(i)" >ELIMINAR DEL CARRITO</button>
+      </mat-card-header>
+    </mat-card>
+  </article>
+  </section>
+  
