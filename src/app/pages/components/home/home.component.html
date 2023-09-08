@@ -2,15 +2,17 @@
   <!-- Mat expansion panel -->
 
   <article class="expansion-panel">
-  <mat-accordion>
+  <mat-accordion >
     <mat-expansion-panel>
       <mat-expansion-panel-header>
-        <mat-panel-title> Self aware panel </mat-panel-title>
-        <mat-panel-description>
-          <!-- Currently I am {{ panelOpenState ? "open" : "closed" }} -->
-        </mat-panel-description>
+        <mat-panel-title> Categorías </mat-panel-title>
+        
       </mat-expansion-panel-header>
-      <p>I'm visible because I am open</p>
+      <div class="category-name" *ngFor="let categorias of listCategories">
+        {{categorias.nombre}}
+      </div>
+      
+   
     </mat-expansion-panel>
   </mat-accordion>
 </article>
