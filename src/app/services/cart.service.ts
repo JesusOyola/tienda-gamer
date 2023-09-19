@@ -31,6 +31,8 @@ export class CartService {
   }
 
   addNewProduct(product: Products) {
+    const cartFromLocalStorage = this.getLocalStorageCart();
+    this.cartProducts = cartFromLocalStorage;
     this.cartProducts.push(product);
     localStorage.setItem('cart', JSON.stringify(this.cartProducts));
   }
