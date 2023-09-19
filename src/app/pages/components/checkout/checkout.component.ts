@@ -24,6 +24,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   obtenerProductosDelCarrito() {
     this.subscription$ = this.cartService.products.subscribe({
       next: (data) => {
+        console.log(data)
         this.cartProductsList = data;
       },
     });
@@ -31,6 +32,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
 
   eliminarProductoDelCarrito(indice: number) {
     this.cartService.deleteProduct(indice);
+    
   }
 
   ngOnDestroy(): void {

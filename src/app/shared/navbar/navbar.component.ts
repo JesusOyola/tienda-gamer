@@ -18,9 +18,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   getAmountCartItems() {
+   
     this.subscription$ = this.cartService.products.subscribe({
       next: (data) => {
         this.cartItems = data.length;
+       
       },
     });
   }
